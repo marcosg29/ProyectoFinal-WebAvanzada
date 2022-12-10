@@ -1,0 +1,25 @@
+<div class="container-fluid px-4">
+    <div class="jumbotron mt-3 mx-0">
+        <h1 class="display-4">ComicBook</h1>
+        <p class="lead">
+            Todos los comics que puedas imaginar!
+        </p>
+        <hr class="my-4">
+    </div>
+    <div class="card" *ngIf="this.cvService.selectedIssue != undefined">
+        <h5 class="card-header">Edicion: {{this.cvService.selectedIssue.issue_number}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{this.cvService.selectedIssue.name}}</h5>
+            <h3>Descripcion</h3>
+            <p class="card-text">{{this.cvService.selectedIssue.description}}</p>
+            <h3>Personajes</h3>
+            <ul class="list-group">
+                <li *ngFor="let item of this.cvService.selectedIssue.character_credits" class="list-group-item">{{item}}
+                </li>
+            </ul>
+            <h3>Equipo de trabajo</h3>
+            <li *ngFor="let item of this.cvService.selectedIssue.person_credits" class="list-group-item">{{item}}</li>
+            <a href="#" class="btn btn-primary">Volver al home</a>
+        </div>
+    </div>
+</div>

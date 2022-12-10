@@ -1,0 +1,51 @@
+<div class="container-fluid px-4">
+    <div class="jumbotron mt-3 mx-0">
+        <h1 class="display-4">ComicBook</h1>
+        <p class="lead">
+            Todos los comics que puedas imaginar!
+        </p>
+        <hr class="my-4">
+    </div>
+    <div class="container-fluid m-0 p-0 position-absolute top-50 end-0 translate-middle-y" style="text-align: center;"
+        *ngIf="this.cvService.issuesList.length <= 0">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="container-fluid m-0 p-0">
+        <div class="container-fluid mb-5">
+            <div class="row mt-0 g-0">
+                <div class="row row-cols-1 row-cols-md-2 g-4 mt-0" *ngIf="this.cvService.issuesList.length > 0">
+                    <div class="col d-flex justify-content-evenly" *ngFor="let issue of this.cvService.issuesList">
+                        <!-- <div class="card mb-3" style="max-width: 540px; height: 270px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 text-center">
+                                    <img [src]="issue.images.original" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{issue.name}}</h5>
+                                        <p class="card-text" style="text-overflow: ellipsis;">
+                                            {{issue.description}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="card">
+                            <img class="card-img-top" (click)="goToIssueDetail(issue.id)" [src]="issue.images.original"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{issue.name}}</h5>
+                                <p class="card-text">{{issue.description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Publicado el {{issue.cover_date | date:'dd/MM/yyy'}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
